@@ -94,3 +94,30 @@ let literalTypes: "valorUnico" | null;
 literalTypes = "valorUnico";
 
 // funções
+
+function sum(a: number, b: number): number {
+    return a + b;
+}
+
+console.log(sum(10, 54));
+/* console.log(sum("10", "54")); */
+
+function sayHelloTo(name: string): string {
+    return `Hello ${name}`;
+}
+
+console.log(sayHelloTo("Gabriel"));
+
+function logger(msg: string): void {
+    console.log(msg);
+}
+
+logger("Mensagem de error");
+
+function greeting(name: string, greet?: string): void {
+    console.log(`Olá ${greet || "Sir"} ${name}`);
+}
+
+greeting("Gabriel");
+
+// interfaces
