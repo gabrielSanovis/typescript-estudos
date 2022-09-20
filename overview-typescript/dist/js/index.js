@@ -61,3 +61,23 @@ function greeting(name, greet) {
     console.log(`Olá ${greet || "Sir"} ${name}`);
 }
 greeting("Gabriel");
+function sumNumbers(nums) {
+    return nums.n1 + nums.n2;
+}
+console.log(sumNumbers({ n1: 10, n2: 31 }));
+function multiplyNumbers(nums) {
+    return nums.n1 * nums.n2;
+}
+console.log(multiplyNumbers({ n1: 4, n2: 5 }));
+const someNumbers = {
+    n1: 5,
+    n2: 10
+};
+console.log(multiplyNumbers(someNumbers));
+function doSomething(info) {
+    typeof info === "number"
+        ? console.log(`O número é ${info}`)
+        : console.log("Não é um número");
+}
+doSomething(true);
+doSomething(10);

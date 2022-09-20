@@ -31,11 +31,11 @@ console.log(myNumbers);
 
 let myTuple: [number, string, string[]];
 
-myTuple = [ 5, "name", [ "a", "b", "c" ] ]
+myTuple = [5, "name", ["a", "b", "c"]]
 
 // object literals -> {prop: value}
 
-const user: {name: string, age: number} = {
+const user: { name: string, age: number } = {
     name: "Gabriel",
     age: 19
 }
@@ -121,3 +121,39 @@ function greeting(name: string, greet?: string): void {
 greeting("Gabriel");
 
 // interfaces
+
+interface MathFunctionParams {
+    n1: number,
+    n2: number
+}
+
+function sumNumbers(nums: MathFunctionParams): number {
+    return nums.n1 + nums.n2;
+}
+
+console.log(sumNumbers({ n1: 10, n2: 31 }));
+
+function multiplyNumbers(nums: MathFunctionParams): number {
+    return nums.n1 * nums.n2;
+}
+
+console.log(multiplyNumbers({n1: 4, n2: 5}));
+
+const someNumbers: MathFunctionParams = {
+    n1: 5,
+    n2: 10
+}
+
+console.log(multiplyNumbers(someNumbers));
+
+// narrowing
+// checagem de tipos
+
+function doSomething(info: number | boolean): void {
+    typeof info === "number"
+    ? console.log(`O número é ${info}`)
+    : console.log("Não é um número");
+}
+
+doSomething(true);
+doSomething(10);
