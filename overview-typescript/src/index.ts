@@ -157,3 +157,112 @@ function doSomething(info: number | boolean): void {
 
 doSomething(true);
 doSomething(10);
+
+// generics
+
+function showArraysItems<T>(arr: T[]): void {
+    arr.forEach(item => {
+        console.log(`Item: ${item}`);
+    })
+}
+
+showArraysItems([0, 2, 3, 4, 5]);
+showArraysItems(["a", "b", "c", "d", "e"]);
+
+// classes 
+class User {
+    name;
+    role;
+    isApproved;
+
+    constructor(name: string, role: string, isApproved: boolean) {
+        this.name = name;
+        this.role = role;
+        this.isApproved = isApproved;
+    }
+
+    showUserName(): void {
+        console.log(`O nome do usuário é ${this.name}`);
+    }
+
+    showUserRole(canShow?: boolean): void {
+        if(canShow) {
+            console.log(`O usuário é o ${this.role}`);
+            return;
+        }
+        console.log("Informação restrita!")
+    }
+}
+
+
+const Gab = new User("Gabriel", "Admin", true);
+console.log(Gab);
+
+Gab.showUserName();
+Gab.showUserRole();
+Gab.showUserRole(Gab.isApproved);
+
+//interfaces em classes 
+
+interface IVehicle {
+    brand: string,
+    showBrand(): void
+}
+
+class Car implements IVehicle {
+    brand;
+    wheels;
+
+    constructor(brand: string, wheels: number) {
+        this.brand = brand;
+        this.wheels = wheels;
+    }
+
+    showBrand(): void {
+        console.log(`O carro é da marca ${this.brand}`);
+    }
+}
+
+const X1 = new Car("BMW", 4);
+
+X1.showBrand();
+
+// herança
+
+class SuperCar extends Car {
+    engine;
+
+    constructor(brand: string, wheels: number, engine: number) {
+        super(brand, wheels);
+        this.engine = engine;
+    }
+}
+
+const a4 = new SuperCar("Audi", 4, 2.0);
+
+console.log(a4);
+a4.showBrand();
+
+// decorators
+// constructor decorator
+function BaseParams () {
+     return function <T extends {new (...args: any[]): {}}> (constructor: T) {
+        return class extends constructor {
+            id = Math.random();
+            createdAt = new Date();
+        }
+     }
+}
+
+@BaseParams()
+class Person {
+    name
+
+    constructor(name: string) {
+        this.name = name;
+    }
+}
+
+const sam = new Person("Sam");
+
+console.log(sam);
